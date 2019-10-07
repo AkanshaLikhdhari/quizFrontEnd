@@ -1,0 +1,123 @@
+<div class="card text-center">  
+    <div class="card-header" >
+         <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">  -->
+        <h2>Welcome to QuizMaster</h2>   
+     <!-- </nav> -->
+ </div>  
+
+    <div class="container" id="default" [hidden]="activeQuiz || resultActive" [ngClass]="{fade: startFade}">  
+    <form class="form-inline well well-sm clearfix">
+            <span>
+            </span>
+            <div id="team">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="well well-sm">
+                            <div class="row">
+                                <div class="col-md-12" id="javaTuts">
+                                    <h4> Basic GuideThrough</h4>
+                                    <p>
+                                      This is a 10 question quiz on Basic Java .Click next buttton to go on next question and you can go on any question using graphic icons.
+                                    </p>
+                                    <h4></h4>
+                                    <h5>All questions are mandatory to submit the quiz and get the result.</h5>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div></div>
+
+            <button class="btn btn-warning pull-middle" (click)="quizActivate()"><strong>Start Quiz</strong></button>
+    </form>
+    </div>  
+  
+  
+    <div class="container" *ngIf="activeQuiz">
+      <div class="row">
+        <div class="col-xs-8">
+                        <h4 class="text-left">Question Status</h4>
+                        <div class="btn-toolbar">
+                            <button type="button" class="btn btn-xs" *ngFor="let questions of question; let i = index" 
+                            [ngClass]="{'btn-success': questions.selected!==null, 'btn-danger': questions.selected === null }" 
+                            (click)="setActiveQuestion(i)" >
+                            <span class="glyphicon" [ngClass]="{'glyphicon-ok': questions.selected !== null , 'glyphicon-question-sign': questions.selected === null}"></span>
+                            </button>
+                        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+       <div class="container">
+        <div class="row">            
+            <h4 class="text-left">Question</h4>
+             <div class="alert alert-danger" role="alert" *ngIf="error">
+                You have not answered all of the question<button class="close" (click)="error = false"></button>
+            </div>           
+            <div class="well well-sm" [hidden]="finlize">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <h4 class="text-left" >{{activeQuestion+1 +" ." +quest.questionDescription}}</h4>
+                        <div class="row">
+                            <div class="col-xs-10" *ngFor="let answer of  allPossibleAnswer let i = index">
+                                <h5  class="answer text-left" [ngClass]="{'bg-info': i === quest.selected}" 
+                                (click)="selectAnswer(i)">{{answer.optionDescription}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-warning" id="continuebtn" (click)="questionAnswered()">Next
+                </button>
+            </div>
+        </div>
+            <div class="well well-sm" *ngIf="finlize">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>Are you sure you want to submit ?</h4>
+                        <button class="btn btn-success" (click)="finalAnswer()">Yes</button>&nbsp;
+                        <button class="btn btn-danger" (click)="finlize = false">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+  </div>
+  <div class="container" *ngIf="resultActive">
+    <div class="row">
+        <div class="col-xs-2">
+        <h4>Result</h4>
+            
+        </div>  
+         <div class="col-xs-4">
+           
+        </div>  
+    </div>
+    <div class="row">
+                    <div class="col-xs-12">
+                       
+                        <!-- <div class="row">
+                          
+                               <div class="col-xs-3">
+                                <div class="circle c1 img-circle">
+                                <h4 class="blue"><strong>Your Percentage</strong>
+                                </h4>{{ calculatePercent() }} %
+                                </div>
+                           </div> -->
+                           <div class="col-xs-3">
+                                <div class="circle c1 img-rounded">
+                                <h4 class="blue"><strong>Your Score</strong>
+                                </h4>{{correctAnsOutOfQuestion()}}/{{totalNumOfQuestion}}
+                                </div>
+                           </div>
+                           <!-- <div class="col-xs-3">
+                                <div class="circle c1 img-rounded">
+                                <h4 class="blue"><strong>Your Grade</strong>
+                                </h4>{{getGrade()}}
+                                </div>
+                           </div> -->
+                        </div>
+                    </div>
+                </div>
+  </div>
+  
+  
+  

@@ -1,0 +1,35 @@
+<header>
+        <div class="container bg-primary">
+     <h2>QuizMaster Login!!!!</h2>
+            </div>
+
+       </header> 
+       <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+       <div class="container" id="mid">
+        <form>
+                <div class="form-row">
+                        <div class="col-xs-2">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="first"
+                  aria-describedby="emailHelp" placeholder="name@example.com" [(ngModel)]="username"/>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                        <div class="col-xs-2">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1"
+                   placeholder="Password" [(ngModel)]="password" name="password">
+                </div>
+                </div>
+                <br>
+                <button (click)=validateUser() class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+        <footer class="footer">
+                <div class="container">
+                       <p class="text">@All CopyRights Reserved!!</p>
+                </div>
+        </footer>
+        
