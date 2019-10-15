@@ -21,7 +21,7 @@ export class QuestionViewComponent implements OnInit {
   resultActive:boolean = false;
   numCorrect:number = 0;
   correctAnswer:any = [];
-  public quizQuestion:any = [];
+  quizQuestion:any = [];
   activeQuestion:number = 0;
   question:any;
   quest:any;
@@ -33,7 +33,7 @@ export class QuestionViewComponent implements OnInit {
   totalNumOfQuestion:any;
    no=[1,2,3,4,5];
   
-  //for getting quiz list
+  //returns quiz list
   public getQuizQuestions():any{
     this.quizService.getQuizQuestion().subscribe((resp)=>{
           this.quizQuestion = resp;
@@ -50,14 +50,14 @@ export class QuestionViewComponent implements OnInit {
     })
   }
   
-  //to start quiz
+  //activates quiz
   public quizActivate(){
          
          this.activeQuiz = this.changeState("quiz",true);
          console.log("inside quiz active..." +this.activeQuiz);
        };
 	   
-	   //changing the state of quiz waether we need to show quiz or result
+	   //Determines whether to show result or questions
 	   public changeState(metric,state){		
          if(metric === "quiz"){
            return this.activeQuiz = state;
@@ -70,15 +70,13 @@ export class QuestionViewComponent implements OnInit {
          }
        };
 	   
-	   //for selecting the option
+	   //select answer
 	    public selectAnswer(index){
          this.quizQuestion[ this.activeQuestion].selected = index;
-          this.quest = this.quizQuestion[ this.activeQuestion];
-            this.allPossibleAnswer = this.quizQuestion[ this.activeQuestion].quizOption;
            
        };
 	   
-	   // for answering quiz
+	   // capturing answers
 	    public questionAnswered(){
          var quizLength = this.quizQuestion.length;
          console.log(quizLength);
@@ -130,7 +128,7 @@ export class QuestionViewComponent implements OnInit {
 	   
 	   //Final submitting the all answer
 	    public finalAnswer(){
-         alert("finalAnswer");
+         alert("Final Submit?");
           this.finlize = false;
           this.activeQuestion = 0;
           this.totalQuestionAnswered = 0;
@@ -144,7 +142,7 @@ export class QuestionViewComponent implements OnInit {
        };
 	   
 	   quizUserAnswer:any = [];
-	   //Taking question Id and Option Id of marked question and option
+	
 	   public markQuiz(){
          for(var i=0;i<this.quizQuestion.length;i++){
           
@@ -166,31 +164,9 @@ export class QuestionViewComponent implements OnInit {
 
 	   }
 	   
-	   //how many correct answers are there
+	   //returns no of correct answers
 	   correctAnsOutOfQuestion = function(){
          return ( this.numCorrect);
        }
-	   
-	  //  //Calculating Percentage
-	  //  public calculatePercent(){
-    //      return (this.numCorrect/this.totalNumOfQuestion*100);
-    //    }
-	   
-	  //  //Calculating Grade
-	  //   public getGrade = function(){
- 
-    //      if((this.numCorrect/ this.totalNumOfQuestion*100)>75 || (this.numCorrect/ this.totalNumOfQuestion*100)>=60){
-    //        return "A";
-    //      }
-    //      else if(( this.numCorrect/ this.totalNumOfQuestion*100)>60 || ( this.numCorrect/ this.totalNumOfQuestion*100)>=45){
-    //        return "B";
-    //      }
-    //      else if(( this.numCorrect/ this.totalNumOfQuestion*100)>45 || ( this.numCorrect/ this.totalNumOfQuestion*100)>=35){
-    //        return "C";
-    //      }
-    //      else{
-    //        return "D";
-    //      }
-    //  };
 	   
 }

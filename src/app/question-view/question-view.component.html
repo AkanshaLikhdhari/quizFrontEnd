@@ -1,8 +1,6 @@
 <div class="card text-center">  
     <div class="card-header" >
-         <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">  -->
         <h2>Welcome to QuizMaster</h2>   
-     <!-- </nav> -->
  </div>  
 
     <div class="container" id="default" [hidden]="activeQuiz || resultActive" [ngClass]="{fade: startFade}">  
@@ -93,27 +91,12 @@
     </div>
     <div class="row">
                     <div class="col-xs-12">
-                       
-                        <!-- <div class="row">
-                          
-                               <div class="col-xs-3">
-                                <div class="circle c1 img-circle">
-                                <h4 class="blue"><strong>Your Percentage</strong>
-                                </h4>{{ calculatePercent() }} %
-                                </div>
-                           </div> -->
                            <div class="col-xs-3">
                                 <div class="circle c1 img-rounded">
                                 <h4 class="blue"><strong>Your Score</strong>
                                 </h4>{{correctAnsOutOfQuestion()}}/{{totalNumOfQuestion}}
                                 </div>
-                           </div>
-                           <!-- <div class="col-xs-3">
-                                <div class="circle c1 img-rounded">
-                                <h4 class="blue"><strong>Your Grade</strong>
-                                </h4>{{getGrade()}}
-                                </div>
-                           </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

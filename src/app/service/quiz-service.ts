@@ -15,17 +15,4 @@ export class QuizService {
 public getQuizQuestion(){
       return this.httpClient.get(environment.baseURL+'questions');
   }
-
-// //for submitting answers
-// public sendQuizAnswer(quizUserAnswer:any){
-//   console.log(quizUserAnswer);
-//   let headers = new HttpHeaders({
-//       'Content-Type': 'application/json'
-//   });
-  
-//   let options = { headers: headers };
-//   return this.httpClient.post(environment.baseURL+'submitQuiz',JSON.stringify({
-//       "quizUserAnswer":quizUserAnswer
-//   }),options);
-// }
 }
